@@ -9,6 +9,7 @@
     - common
     - rails-gem-dependencies
     - deploy-user
+    - fail2ban
     # - geerlingguy.ruby
     # - geerlingguy.passenger
 
