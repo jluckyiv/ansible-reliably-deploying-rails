@@ -1,0 +1,17 @@
+# vim: set ft=ansible :
+
+---
+- name: Install curl
+  yum: name=curl state=present
+
+- name: Install libcurl
+  yum: name=libcurl state=present
+
+- name: Install libcurl-devel
+  yum: name=libcurl-devel state=present
+
+- name: Install ImageMagick-devel
+  yum: name=ImageMagick-devel state=present
+
+- name: Install ImageMagick
+  yum: name=ImageMagick state=present
