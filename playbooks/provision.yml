@@ -6,7 +6,7 @@
     - vars.yml
 
   roles:
-    - ansible-dependencies
+    - common
     # - geerlingguy.nodejs
     # - geerlingguy.ruby
     # - geerlingguy.passenger
