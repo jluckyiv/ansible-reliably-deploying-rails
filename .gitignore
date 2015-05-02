@@ -1,0 +1,48 @@
+# Ignore application configuration
+/config/application.yml
+/config/fog_credentials.yml
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles and local system/bin files
+/log
+/tmp
+/spec/tmp
+/spec/reports
+/test/tmp
+/test/version_tmp
+**.orig
+*.swp
+*~
+*.so
+*.o
+*.a
+mkmf.log
+**/.DS_Store
+/bin
+*.sassc
+.sass-cache
+
+# Ignore local config
+*.rbc
+*.gem
+.rvmrc
+.env # dotenv
+.vagrant
+.config
+.yardoc
+InstalledFiles
+_yardoc
+coverage
+/.bundle
+/vendor/bundle
+capybara-*.html
+.rspec
+rerun.txt
+pickle-email-*.html
+
+# Ignore TextMate files
+*.tmproj
+*.tmproject
