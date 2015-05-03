@@ -1,6 +1,9 @@
 # vim: set ft=ansible :
 
 ---
+- name: Ensure 'Development tools' package group is installed
+  yum: name="@Development tools" state=present
+
 - name: Ensure curl is installed
   yum: name=curl state=present
 

@@ -21,7 +21,7 @@
   lineinfile: dest=/etc/ssh/sshd_config state=present regexp='^UsePAM' line='UsePAM no'
   notify: restart sshd
 
-- name: Ensure Fail2Ban is installed
+- name: Ensure Fail2ban is installed
   yum: name=fail2ban enablerepo=epel state=present
 
 - name: Copy fail2ban.conf to fail2ban.local

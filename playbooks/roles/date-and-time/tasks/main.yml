@@ -1,0 +1,8 @@
+# vi: set ft=ansible :
+---
+- name: Ensure ntp is installed
+  yum: name=ntp state=present
+
+- name: Ensure daily cron job for ntp exists
+  copy: src=cron.daily.ntpdate dest=/etc/cron.daily/ntpdate owner=root group=root mode=755 backup=yes
+
