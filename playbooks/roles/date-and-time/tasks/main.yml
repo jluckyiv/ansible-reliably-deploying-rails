@@ -6,3 +6,4 @@
 - name: Ensure daily cron job for ntp exists
   copy: src=cron.daily.ntpdate dest=/etc/cron.daily/ntpdate owner=root group=root mode=755 backup=yes
 
+# todo: ensure time zone

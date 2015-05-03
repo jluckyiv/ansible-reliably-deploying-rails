@@ -33,4 +33,5 @@
   with_file:
     - id_rsa.pub
 
-
+# todo: deploy user password
+# todo: disable passwordless sudo and create passwordless devops user

@@ -28,3 +28,4 @@
   command: cp -f /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
   notify: restart fail2ban
 
+# todo: automatic security updates
