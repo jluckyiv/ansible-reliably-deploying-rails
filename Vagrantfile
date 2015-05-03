@@ -2,8 +2,8 @@
 # vi: set ft=ruby :
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "parallels/centos-6.5"
-  # config.vm.box = "nrel/CentOS-6.5-x86_64"
+  # config.vm.box = "parallels/centos-6.5"
+  config.vm.box = "nrel/CentOS-6.5-x86_64"
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbooks/main.yml"
