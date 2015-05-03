@@ -10,9 +10,5 @@
 - name: Copy the GPG key for EPEL
   copy: src=RPM-GPG-KEY-EPEL-6 dest=/etc/pki/rpm-gpg
 
-- name: Copy iptables rules file
-  copy: src=iptables-save dest=/etc/sysconfig/iptables
-  notify: restart iptables
-
 - name: Ensure Vim is installed
   yum: name=vim enablerepo=epel state=present

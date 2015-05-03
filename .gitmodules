@@ -1,3 +1,0 @@
-[submodule "playbooks/roles/fail2ban"]
-	path = playbooks/roles/fail2ban
-	url = git://github.com/jorti/ansible-fail2ban.git

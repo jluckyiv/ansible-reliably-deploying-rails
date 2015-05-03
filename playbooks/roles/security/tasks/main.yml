@@ -1,0 +1,30 @@
+# vim: set ft=ansible :
+
+---
+- name: Copy iptables rules file
+  copy: src=iptables-save dest=/etc/sysconfig/iptables
+  notify: restart iptables
+
+- name: Ensure sshd commented lines are removed
+  lineinfile: dest=/etc/ssh/sshd_config state=absent regexp='^#'
+  notify: restart sshd
+
+- name: Ensure sshd Password Authentication is off
+  lineinfile: dest=/etc/ssh/sshd_config state=present regexp='^PasswordAuthentication' line='PasswordAuthentication no'
+  notify: restart sshd
+
+- name: Ensure sshd X11 Forwarding is off
+  lineinfile: dest=/etc/ssh/sshd_config state=present regexp='^X11Forwarding' line='X11Forwarding no'
+  notify: restart sshd
+
+- name: Ensure sshd Use PAM is off
+  lineinfile: dest=/etc/ssh/sshd_config state=present regexp='^UsePAM' line='UsePAM no'
+  notify: restart sshd
+
+- name: Ensure Fail2Ban is installed
+  yum: name=fail2ban enablerepo=epel state=present
+
+- name: Copy fail2ban.conf to fail2ban.local
+  command: cp -f /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+  notify: restart fail2ban
+

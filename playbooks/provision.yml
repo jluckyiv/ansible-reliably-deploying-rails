@@ -7,9 +7,9 @@
 
   roles:
     - common
-    - rails-gem-dependencies
+    - security
     - deploy-user
-    - fail2ban
+    - rails-gem-dependencies
     # - geerlingguy.ruby
     # - geerlingguy.passenger
 
