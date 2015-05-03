@@ -11,14 +11,18 @@
     - deploy-user
     - date-and-time
     - rails-gem-dependencies
-    - role: geerlingguy.ruby
-      ruby_install_from_source: true
-      ruby_download_url: "http://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.2.tar.gz"
-      ruby_version: 2.2.2
-      ruby_install_gems:
-      - bundler
-    - role: Stouts.nodejs
-      nodejs_version: 0.12.2
+    # - role: geerlingguy.ruby
+    #   ruby_install_from_source: true
+    #   ruby_download_url: "http://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.2.tar.gz"
+    #   ruby_version: 2.2.2
+    #   ruby_install_gems:
+    #   - bundler
+    # - role: Stouts.nodejs
+    #   nodejs_version: 0.12.2
+    # - role: monit
+    #   monit_cycle: 30
+    #   monit_log_destination: /var/log/syslog
+    - monit
 
   # tasks:
     # - name: Install app dependencies.

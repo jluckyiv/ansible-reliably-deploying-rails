@@ -1,0 +1,36 @@
+# {{ ansible_managed }}
+
+set daemon {{ monit_poll_period }}
+
+set logfile syslog facility log_daemon
+
+{% if monit_enable_emails %}
+  {% if monit_notify_emails %}
+    {% for email in monit_notify_emails %}
+      {% if monit_minimize_alerts %}
+set alert {{ email }} but not on {instance, pid, ppid, resource}
+      {% else %}
+set alert {{ email }}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if monit_mailserver_host %}
+set mailserver {{ monit_mailserver_host }} port {{ monit_mailserver_port }}
+  username "{{ monit_mailserver_username }}"
+  password "{{ monit_mailserver_password }}"
+  using tlsv1
+  with timeout 30 seconds
+  using hostname "{{ monit_mailserver_hostname }}"
+  {% endif %}
+{% endif %}
+
+set httpd port 2812 and
+    use address localhost
+    allow localhost
+    {% if monit_web_interface_allow %}
+    allow {{ monit_web_interface_allow[0] }}:{{ monit_web_interface_allow[1] }}
+    {% endif %}
+
+include /etc/monit/conf.d/*.conf
+

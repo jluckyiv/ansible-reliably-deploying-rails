@@ -1,0 +1,4 @@
+# vi: set ft=ansible :
+---
+- name: restart monit
+  service: name=monit state=restarted

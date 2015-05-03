@@ -1,0 +1,17 @@
+# vi: set ft=ansible :
+---
+- name: Ensure monit is installed
+  yum: name=monit enablerepo=epel state=present
+  notify:
+  - restart monit
+
+- name: Ensure monit default config file
+  template: src=monitrc.j2 dest={{ monit_conf_path }} backup=no owner=root group=root mode=0600
+  notify:
+  - restart monit
+
+# - name: Ensure monit daemon configuration
+#   template: src=monit.conf_overrides.j2 dest={{ monit_confd_dir }}/00_monit_config backup=no owner=root group=root mode=0600
+#   notify:
+#   - restart monit
+
