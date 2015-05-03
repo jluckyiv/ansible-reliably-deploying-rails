@@ -1,0 +1,3 @@
+# vi: set ft=ansible :
+---
+now: '{{ ansible_date_time["epoch"] }}'
