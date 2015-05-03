@@ -1,3 +1,4 @@
+# vi: set ft=ansible :
 ---
 - name: restart iptables
   service: name=iptables state=restarted

@@ -1,13 +1,14 @@
 # vim: set ft=ansible :
-
 ---
+- name: Ensure iptables service is enabled
+  service: name=iptables enabled=yes
+
 - name: Copy iptables rules file
   copy: src=iptables-save dest=/etc/sysconfig/iptables
   notify: restart iptables
 
-# - name: Ensure sshd commented lines are removed
-#   lineinfile: dest=/etc/ssh/sshd_config state=absent 
-#   notify: restart sshd
+- name: Ensure sshd service is enabled
+  service: name=sshd enabled=yes
 
 - name: Ensure sshd is secure
   lineinfile:
@@ -32,6 +33,9 @@
 
 - name: Ensure Fail2ban is installed
   yum: name=fail2ban enablerepo=epel state=present
+
+- name: Ensure Fail2ban service is enabled
+  service: name=fail2ban enabled=yes
 
 - name: Copy fail2ban.conf to fail2ban.local
   command: cp -f /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
