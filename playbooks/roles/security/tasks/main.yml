@@ -5,20 +5,29 @@
   copy: src=iptables-save dest=/etc/sysconfig/iptables
   notify: restart iptables
 
-- name: Ensure sshd commented lines are removed
-  lineinfile: dest=/etc/ssh/sshd_config state=absent regexp='^#'
-  notify: restart sshd
+# - name: Ensure sshd commented lines are removed
+#   lineinfile: dest=/etc/ssh/sshd_config state=absent 
+#   notify: restart sshd
 
-- name: Ensure sshd Password Authentication is off
-  lineinfile: dest=/etc/ssh/sshd_config state=present regexp='^PasswordAuthentication' line='PasswordAuthentication no'
-  notify: restart sshd
-
-- name: Ensure sshd X11 Forwarding is off
-  lineinfile: dest=/etc/ssh/sshd_config state=present regexp='^X11Forwarding' line='X11Forwarding no'
-  notify: restart sshd
-
-- name: Ensure sshd Use PAM is off
-  lineinfile: dest=/etc/ssh/sshd_config state=present regexp='^UsePAM' line='UsePAM no'
+- name: Ensure sshd is secure
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    state: "{{ item.state }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+    - state: absent
+      regexp: "^#"
+      line: ""
+    - state: present
+      regexp: "^PasswordAuthentication"
+      line: "PasswordAuthentication no"
+    - state: present
+      regexp: "^X11Forwarding"
+      line: "X11Forwarding no"
+    - state: present
+      regexp: "^UsePAM"
+      line: "UsePAM no"
   notify: restart sshd
 
 - name: Ensure Fail2ban is installed
