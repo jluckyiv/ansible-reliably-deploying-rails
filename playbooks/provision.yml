@@ -13,14 +13,29 @@
     - date-and-time
     - monit
     - rails-gem-dependencies
-    # - role: geerlingguy.ruby
-    #   ruby_install_from_source: true
-    #   ruby_download_url: "http://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.2.tar.gz"
-    #   ruby_version: 2.2.2
-    #   ruby_install_gems:
-    #   - bundler
-    # - role: Stouts.nodejs
-    #   nodejs_version: 0.12.2
+    - role: geerlingguy.memcached
+    - role: geerlingguy.redis
+    - role: jdauphant.nginx
+
+    - role: patrik.uytterhoeven.PostgreSQL-For-RHEL6x
+      postgresql_version: 9.3
+      postgresql_encoding: 'UTF-8'
+      postgresql_locale: 'en_US.UTF-8'
+      postgresql_admin_user: "postgres"
+      postgresql_default_auth_method: "trust"
+      postgresql_databases: []
+      postgresql_users: []
+      postgresql_user_privileges: []
+
+    - role: geerlingguy.ruby
+      ruby_install_from_source: true
+      ruby_download_url: "http://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.2.tar.gz"
+      ruby_version: 2.2.2
+      ruby_install_gems:
+      - bundler
+
+    - role: Stouts.nodejs
+      nodejs_version: 0.12.2
 
   # tasks:
     # - name: Install app dependencies.
@@ -36,3 +51,4 @@
     #     owner: "{{ app_user }}"
     #     group: "{{ app_user }}"
     #     mode: 0755
+
